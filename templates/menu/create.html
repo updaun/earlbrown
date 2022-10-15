@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="box">
+        <h2>Menu Create Page</h2>
+        <input class="textbox" type="text" id="title" placeholder="Title...">
+        <input class="textbox" type="text" id="category" placeholder="Category...">
+        <input class="textbox" type="text" id="price" placeholder="Price...">
+        <textarea  id="description" placeholder="Description..."></textarea>
+
+
+        <div class="btn-box">
+            <button type="submit" id="submit">submit</button>
+        </div>
+
+    </div>
+
+<script>
+
+      // 버튼 눌렀을 때
+      $('#submit').click(function () {
+
+          let title = $('#title').val();
+          let category = $('#category').val();
+          let price = $('#price').val().replace(/,/g, '');
+          let description = $('#description').val();
+
+            $.ajax({
+                url: "{% url 'menu:create-api' %}",
+                data: {
+                    title:title,
+                    category:category,
+                    price:price,
+                    description:description,
+                },
+                method: "POST",
+                success: function (data){
+                    alert("Menu 생성 성공!");
+                },
+                error:function (request, status, error){
+                    alert("Menu 생성 실패!");
+                },
+                complete: function (data) {
+                    location.replace("{% url 'menu:list' %}")
+                },
+            });
+      });
+
+</script>
+
+
+{% endblock %}

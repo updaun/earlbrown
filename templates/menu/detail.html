@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="box">
+
+
+    <a href="{% url 'menu:list' %}" style="color:#a19c9c;">back</a>
+
+    <h2>menu Detail Page</h2>
+
+    {% if menu %}
+
+        <p class="list_title">{{menu.title}}</p>
+        <p class="list_title">{{menu.category_map}}</p>
+        <p class="list_title">{{menu.currency}}</p>
+        <div class="des_wrap">
+            <p>{{menu.description}}</p>
+        </div>
+
+
+
+    <div style="display: flex; flex-direction: row;">
+        <a href="{% url 'menu:update' pk=menu.id %}">
+            <button type="submit">edit</button>
+        </a>
+
+        <div class="btn-box" style="margin-left:1rem;">
+            <button type="submit" id="delete-btn">delete</button>
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+<script>
+// 삭제 버튼 눌렀을 때
+      $('#delete-btn').click(function () {
+
+            $.ajax({
+                url: "{% url 'menu:delete-api' pk=menu.id %}",
+                data: {
+
+                },
+                method: "DELETE",
+                success: function (data){
+                    alert("menu 삭제 성공!");
+                },
+                error:function (request, status, error){
+                    alert("menu 삭제 실패!");
+                },
+                complete: function (data) {
+                    location.replace("{% url 'menu:list' %}")
+                },
+            });
+      });
+
+</script>
+
+
+
+
+{% endblock %}

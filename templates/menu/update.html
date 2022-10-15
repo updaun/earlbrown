@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="box">
+    <h2>menu Update Page</h2>
+    <input class="textbox" type="text" id="title" placeholder="Title..." value="{{menu.title}}">
+    <input class="textbox" type="text" id="category" placeholder="Category..." value="{{menu.category_map}}">
+    <input class="textbox" type="text" id="price" placeholder="Price..." value="{{menu.price_int}}">
+    <textarea id="description" placeholder="Description...">{{menu.description}}</textarea>
+
+    <div class="btn-box">
+        <button type="submit" id="submit">update</button>
+    </div>
+</div>
+
+<script>
+
+    $( document ).ready(function() {
+        console.log();
+
+    });
+
+      // 버튼 눌렀을 때
+      $('#submit').click(function () {
+
+          let title = $('#title').val();
+          let category = $('#category').val();
+          let price = $('#price').val().replace(/,/g, '');
+          let description = $('#description').val();
+
+            $.ajax({
+                url: "{% url 'menu:update-api' pk=menu.id %}",
+                data: {
+                    title:title,
+                    category:category,
+                    price:price,
+                    description:description,
+                },
+                method: "PATCH",
+                success: function (data){
+                    alert("menu 수정 성공!");
+                    location.replace("{% url 'menu:detail' pk=menu.id %}");
+                },
+                error:function (request, status, error){
+                    alert("menu 수정 실패!");
+                },
+                complete: function (data) {
+                    //console.log("완료");
+                },
+            });
+      });
+
+</script>
+
+
+{% endblock %}

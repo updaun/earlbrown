@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="box">
+
+    <h2>Menu List Page</h2>
+
+    {% for menu in menu_list %}
+
+    <div class="listbox">
+        <a href="{% url 'menu:detail' pk=menu.id %}">
+            {{menu.title}} {{menu.currency}}원
+        </a>
+    </div>
+
+    {% endfor %}
+
+
+    <div class="btn-box">
+        <button type="submit" id="create-btn" onclick="location.replace('/menu/create/')">create</button>
+    </div>
+
+</div>
+
+
+
+{% endblock %}
