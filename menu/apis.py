@@ -1,8 +1,12 @@
+import os
+from uuid import uuid4
 from django.shortcuts import render
 from rest_framework import generics
+from earlbrown.settings import MEDIA_ROOT
 
-from .models import Menu
+from .models import Menu, MenuImage
 from .serializers import MenuSerializer
+from .serializers import MenuImageSerializer
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -57,3 +61,37 @@ class MenuDeleteAPI(generics.DestroyAPIView):
         instance = self.get_object(pk)
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# 프로필 이미지 업로드 API
+class MenuImageCreateAPI(APIView):
+    def post(self, request, pk):
+        if request.FILES.get("file") is not None:
+            file = request.FILES["file"]
+            file_name = file.name
+            extension = os.path.splitext(file_name)[1]
+            uuid_name = uuid4().hex + extension
+
+            dir_name = "menu"
+            dir_path = os.path.join(MEDIA_ROOT, dir_name)
+
+            # 폴더 생성 예외처리
+            if not os.path.exists(dir_path):
+                os.makedirs(dir_path)
+
+            save_path = os.path.join(dir_path, uuid_name)
+
+            # 이미지 저장
+            with open(save_path, "wb+") as destination:
+                for chunk in file.chunks():
+                    destination.write(chunk)
+
+            menu_image_name = os.path.join(dir_name, uuid_name)
+
+            menu_image = MenuImage(menu_id=pk, image=menu_image_name)
+
+            menu_image.save()
+
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_200_OK)

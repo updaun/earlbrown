@@ -1,20 +1,65 @@
 {% extends 'base.html' %}
 
+{% load static %}
 {% block content %}
 
 <div class="box">
-    <h2>menu Update Page</h2>
+    <h2>Menu Update Page</h2>
     <input class="textbox" type="text" id="title" placeholder="Title..." value="{{menu.title}}">
-    <input class="textbox" type="text" id="category" placeholder="Category..." value="{{menu.category_map}}">
+    <input class="textbox" type="text" id="category" placeholder="Category..." value="{{menu.category}}">
     <input class="textbox" type="text" id="price" placeholder="Price..." value="{{menu.price_int}}">
+
     <textarea id="description" placeholder="Description...">{{menu.description}}</textarea>
 
     <div class="btn-box">
+
+        <button id="button_image_upload">사진 등록</button>
+        <input type="file", id="input_fileupload" onchange="readURL(this)" style="display:none;">
+
         <button type="submit" id="submit">update</button>
     </div>
+
+    <div>
+        <img id="preview" class="profile_img">
+    </div>
+
+    {% for menuImage in imageList %}
+    <div>
+        <img class="profile_img" src="{% get_media_prefix %}{{ menuImage.image }}">
+    </div>
+    {% endfor %}
+
 </div>
 
 <script>
+
+    $('#button_image_upload').click(function(){
+        $('#input_fileupload').click();
+    });
+
+
+    function readURL(input) {
+    	let imgName = input.files.name; //이미지 파일명
+    	let imgSize = input.files[0].size; //이미지 용량
+
+    	let maxSize = 20 * 1024 * 1024;// 20MB
+
+    	 if(imgSize > maxSize){
+    		alert("이미지 용량은 20MB 이내로 등록 가능합니다. ");
+    		return;
+    	}
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+              document.getElementById('preview').src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }else{
+            document.getElementById('preview').src = "";
+        }
+    }
+
 
     $( document ).ready(function() {
         console.log();
@@ -40,6 +85,7 @@
                 method: "PATCH",
                 success: function (data){
                     alert("menu 수정 성공!");
+                    profile_upload();
                     location.replace("{% url 'menu:detail' pk=menu.id %}");
                 },
                 error:function (request, status, error){
@@ -49,6 +95,33 @@
                     //console.log("완료");
                 },
             });
+
+
+        function profile_upload(){
+            let file = $('#input_fileupload')[0].files[0];
+
+            let fd = new FormData();
+
+            fd.append('file', file);
+            $.ajax({
+                url: "{% url 'menu:image-create-api' pk=menu.id %}",
+                data: fd,
+                method: "POST",
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    console.log("성공");
+                },
+                error: function (request, status, error) {
+                    console.log("에러");
+                },
+                complete: function (data) {
+                    console.log("완료");
+                    //location.replace('/auth/profile/');
+                },
+            });
+        };
+
       });
 
 </script>

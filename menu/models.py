@@ -29,3 +29,9 @@ class Menu(models.Model):
 
     def price_int(self):
         return int(self.price)
+
+
+class MenuImage(models.Model):
+    menu = models.ForeignKey(Menu, related_name="menu", on_delete=models.CASCADE)
+    image = models.TextField(null=True, default="default_profile.png")
+    visibility = models.BooleanField(default=True)

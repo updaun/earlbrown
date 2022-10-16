@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import MenuCreateView, MenuListView, MenuDetailView, MenuUpdateView
 from .apis import MenuCreateAPI, MenuDetailAPI, MenuUpdateAPI, MenuDeleteAPI
+from .apis import MenuImageCreateAPI
 
 app_name = "menu"
 
@@ -15,4 +16,9 @@ urlpatterns = [
     path("api/detail/<int:pk>", MenuDetailAPI.as_view(), name="detail-api"),
     path("api/update/<int:pk>", MenuUpdateAPI.as_view(), name="update-api"),
     path("api/delete/<int:pk>", MenuDeleteAPI.as_view(), name="delete-api"),
+    path(
+        "api/image/create/<int:pk>",
+        MenuImageCreateAPI.as_view(),
+        name="image-create-api",
+    ),
 ]
