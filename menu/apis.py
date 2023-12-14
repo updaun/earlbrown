@@ -2,7 +2,7 @@ import os
 from uuid import uuid4
 from django.shortcuts import render
 from rest_framework import generics
-from earlbrown.settings import MEDIA_ROOT
+from config.settings import MEDIA_ROOT
 
 from .models import Menu, MenuImage
 from .serializers import MenuSerializer
