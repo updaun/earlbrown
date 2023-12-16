@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +10,10 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
     <!-- font awesome cdn link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- naver map -->
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=9be0gyxdwe"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- custom css file link -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="style.css?v1">
 
 </head>
 
@@ -75,7 +71,7 @@
                     -->
                 </div>
                 <div class="image">
-                    <img src="{% static 'images/bacon-egg-benedict.jpg' %}" alt="">
+                    <img src='images/bacon-egg-benedict.jpg' alt="">
 
                 </div>
             </div>
@@ -90,7 +86,7 @@
                     -->
                 </div>
                 <div class="image">
-                    <img src="{% static 'images/salmon-egg-benedict.jpg' %}" alt="">
+                    <img src='images/salmon-egg-benedict.jpg' alt="">
                 </div>
             </div>
 
@@ -104,7 +100,7 @@
                     -->
                 </div>
                 <div class="image">
-                    <img src="{% static 'images/creamy-mushroom-pasta.jpg' %}" alt="">
+                    <img src='images/creamy-mushroom-pasta.jpg' alt="">
 
                 </div>
             </div>
@@ -128,9 +124,10 @@
         <div class="box">
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-eye"></a>
-            <img src="{% static 'images/bacon-egg-benedict.jpg' %}" alt="">
+            <img src='images/bacon-egg-benedict.jpg' alt="">
 
-            <h3>tasty food</h3>
+            <h3>베이컨 에그 베네딕트</h3>
+            <!--
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -138,16 +135,20 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
+            -->
             <span>15,000원</span>
+            <!--
             <a href="#" class="btn">add to cart</a>
+            -->
         </div>
 
         <div class="box">
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-eye"></a>
-            <img src="{% static 'images/salmon-egg-benedict.jpg' %}" alt="">
+            <img src='images/salmon-egg-benedict.jpg' alt="">
 
-            <h3>tasty food</h3>
+            <h3>살몬 에그 베네딕트</h3>
+            <!--
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -155,16 +156,20 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <span>15,000원</span>
+            -->
+            <span>16,000원</span>
+            <!--
             <a href="#" class="btn">add to cart</a>
+            -->
         </div>
 
         <div class="box">
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-eye"></a>
-            <img src="{% static 'images/creamy-mushroom-pasta.jpg' %}" alt="">
+            <img src='images/creamy-mushroom-pasta.jpg' alt="">
 
-            <h3>tasty food</h3>
+            <h3>크리미 머쉬룸 파스타</h3>
+            <!--
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -172,8 +177,11 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <span>15,000원</span>
+            -->
+            <span>15,500원</span>
+            <!--
             <a href="#" class="btn">add to cart</a>
+            -->
         </div>
     </div>
 </section>
@@ -188,18 +196,19 @@
     <h1 class="heading"> why choose us? </h1>
 
     <div class="row">
-        <div class="image">
-            <img src="{% static 'images/about-img.jpg' %}" alt="">
-
+        <div class="storeGallery">
+            <img class="storeImage active" src='images/about1.jpg' alt="">
+            <img class="storeImage" src='images/about2.jpg' alt="">
+            <img class="storeImage" src='images/about3.jpg' alt="">
         </div>
         <div class="content">
             <h3>순천의 뉴질랜드식 브런치</h3>
-            <p>뉴질랜드에서 6년 동안 다양한 조리 기술을 익히며 쌓은 경험을 기반으로 하는 작은 브런치 가게입니다.</p>
-            <p>얼브라운은 특별한 요리로 고객들에게 뉴질랜드의 풍미를 선사합니다.</p>
-            <p>주소 : 전라남도 순천시 저전길 24 얼브라운 <a href="https://map.naver.com/v5/entry/place/1964414349?lng=127.4836962&lat=34.9496974&placePath=%2Fhome&entry=plt&searchType=place">지도</a></p>
-            <p>영업 시간 : 10:00 ~ 15:30</p>
-            <p>라스트 오더 : 14:30</p>
-            <p>휴무일 : 매주 화요일</p>
+            <p>뉴질랜드에서 6년 동안 다양한 조리 기술을 익히며 경험을 쌓았습니다.</p>
+            <p>얼브라운만의 특별한 요리로 뉴질랜드의 풍미를 선사합니다.</p>
+            <p><i class="fas fa-location-dot"></i> 주소 : 전라남도 순천시 저전길 24 얼브라운 <a href="https://map.naver.com/v5/entry/place/1964414349?lng=127.4836962&lat=34.9496974&placePath=%2Fhome&entry=plt&searchType=place">[지도 보기]</a></p>
+            <p><i class="fas fa-clock"></i> 영업 시간 : 10:00 ~ 15:30</p>
+            <p><i class="fas fa-hand"></i> 라스트 오더 : 14:30</p>
+            <p><i class="fas fa-shop-lock"></i> 휴무일 : 매주 화요일</p>
             <div class="icons-container">
                 <div class="icons">
                     <i class="fas fa-kiwi-bird"></i>
@@ -235,11 +244,12 @@
     <div class="box-container">
         <div class="box">
             <div class="image">
-                <img src="{% static 'images/menu.jpg' %}" alt="">
+                <img src='images/special_menu1.jpg' alt="">
 
                 <a href="#" class="fas fa-heart"></a>
             </div>
             <div class="content">
+                <!--
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -247,19 +257,74 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <h3>delicious food</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                -->
+                <h3>단호박 크림 뇨끼</h3>
+                <p>겨울 시즌 메뉴 (한정판매)</p>
+                <!--
                 <a href="#" class="btn"> add to cart </a>
+                -->
+                <span class="price">21,000원</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src='images/monthly_menu.jpg' alt="">
+
+                <a href="#" class="fas fa-heart"></a>
+            </div>
+            <div class="content">
+                <!--
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                -->
+                <h3>그릴드 햄치즈토스트 & 토마토수프</h3>
+                <p>12월 먼슬리메뉴</p>
+                <!--
+                <a href="#" class="btn"> add to cart </a>
+                -->
+                <span class="price">14,000원</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src='images/menu1.jpg' alt="">
+
+                <a href="#" class="fas fa-heart"></a>
+            </div>
+            <div class="content">
+                <!--
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                -->
+                <h3>잠봉 오일파스타</h3>
+                <p>썬드라이드 토마토, 루꼴라, 그린올리브, 잠봉햄이 올라간 오일파스타</p>
+                <!--
+                <a href="#" class="btn"> add to cart </a>
+                -->
                 <span class="price">15,000원</span>
             </div>
         </div>
+
         <div class="box">
             <div class="image">
-                <img src="{% static 'images/menu.jpg' %}" alt="">
+                <img src='images/menu2.jpg' alt="">
 
                 <a href="#" class="fas fa-heart"></a>
             </div>
             <div class="content">
+                <!--
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -267,9 +332,112 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <h3>delicious food</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                -->
+                <h3>샥슈카</h3>
+                <p>토마토 스튜 안에 계란, 베이컨, 양송이가 들어있는 에그인헬</p>
+                <!--
                 <a href="#" class="btn"> add to cart </a>
+                -->
+                <span class="price">16,000원</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src='images/menu3.jpg' alt="">
+
+                <a href="#" class="fas fa-heart"></a>
+            </div>
+            <div class="content">
+                <!--
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                -->
+                <h3>체리페퍼 오일파스타</h3>
+                <p>체리모양을 한 고추 안에 크림치즈가 가득들어있는 체리페퍼가 올라간 오일파스타</p>
+                <!--
+                <a href="#" class="btn"> add to cart </a>
+                -->
+                <span class="price">15,000원</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src='images/menu4.jpg' alt="">
+
+                <a href="#" class="fas fa-heart"></a>
+            </div>
+            <div class="content">
+                <!--
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                -->
+                <h3>쉬림프 로제파스타</h3>
+                <p>3가지 치즈가 들어간 로제소스위에 통통한 새우가 올라간 로제 파스타</p>
+                <!--
+                <a href="#" class="btn"> add to cart </a>
+                -->
+                <span class="price">16,000원</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src='images/menu5.jpg' alt="">
+
+                <a href="#" class="fas fa-heart"></a>
+            </div>
+            <div class="content">
+                <!--
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                -->
+                <h3>살몬 오픈 샌드위치</h3>
+                <p>아보카도 퓨레, 루꼴라, 프렌치소스, 훈제연어, 케이퍼, 적양파가 올라간 오픈샌드위치</p>
+                <!--
+                <a href="#" class="btn"> add to cart </a>
+                -->
+                <span class="price">15,500원</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src='images/menu6.jpg' alt="">
+
+                <a href="#" class="fas fa-heart"></a>
+            </div>
+            <div class="content">
+                <!--
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                -->
+                <h3>부라타치즈 샐러드</h3>
+                <p>부라타 치즈와 발사믹 글레이즈, 토마토와 제철과일이 올라간 샐러드</p>
+                <!--
+                <a href="#" class="btn"> add to cart </a>
+                -->
                 <span class="price">15,000원</span>
             </div>
         </div>
@@ -294,7 +462,7 @@
             <div class="swiper-slide slide">
                 <i class="fas fa-quote-right"></i>
                 <div class="user">
-                    <img src="{% static 'images/user-1.jpg' %}" alt="">
+                    <img src='images/user-1.jpg' alt="">
                     <div class="user-info">
                         <h3>john deo</h3>
                         <div class="stars">
@@ -316,7 +484,7 @@
             <div class="swiper-slide slide">
                 <i class="fas fa-quote-right"></i>
                 <div class="user">
-                    <img src="{% static 'images/user-1.jpg' %}" alt="">
+                    <img src='images/user-1.jpg' alt="">
                     <div class="user-info">
                         <h3>john deo</h3>
                         <div class="stars">
@@ -338,7 +506,7 @@
             <div class="swiper-slide slide">
                 <i class="fas fa-quote-right"></i>
                 <div class="user">
-                    <img src="{% static 'images/user-1.jpg' %}" alt="">
+                    <img src='images/user-1.jpg' alt="">
                     <div class="user-info">
                         <h3>john deo</h3>
                         <div class="stars">
@@ -451,7 +619,7 @@
             <a href="#">061-904-1444</a>
             <a href="https://open.kakao.com/o/sokOcPSb">kakaotalk</a>
             <a href="https://www.instagram.com/earlbrownbrunch/">instagram</a>
-            <a href="#about">address 전남 순천시 저전길 24 얼브라운</a>
+            <a href="https://map.naver.com/v5/entry/place/1964414349?lng=127.4836962&lat=34.9496974&placePath=%2Fhome&entry=plt&searchType=place">address 전남 순천시 저전길 24 얼브라운</a>
         </div>
         <!--
         <div class="box">
@@ -467,7 +635,7 @@
 
 <!-- loader part  -->
 <div class="loader-container">
-    <img src="{% static 'images/loader.gif' %}" alt="">
+    <img src='images/loader.gif' alt="">
 </div>
 
 
@@ -475,7 +643,7 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <!-- custom js file link -->
-<script src="{% static 'js/script.js' %}"></script>
+<script src="script.js?v1"></script>
 
 </body>
 </html>

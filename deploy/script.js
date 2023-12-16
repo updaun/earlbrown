@@ -1,5 +1,7 @@
 let menu = document.querySelector('#menu-bars');
 let navbar = document.querySelector('.navbar');
+let images = document.querySelectorAll('.storeImage');
+let currentImageIndex = 0;
 
 menu.onclick = () => {
     menu.classList.toggle('fa-times');
@@ -92,16 +94,39 @@ function fadeOut(){
     setInterval(loader, 2000);
 }
 
-window.onload = fadeOut;
+window.onload = function() {
+    fadeOut();
+    // 초기 이미지 표시
+    showImage(currentImageIndex);
+}
 
-// 네이버 지도를 생성합니다.
-var map = new naver.maps.Map('map', {
-    center: new naver.maps.LatLng(37.5666102, 126.9783881), // 지도의 중심 좌표
-    zoom: 15 // 지도의 확대 레벨
-});
 
-// 지도에 마커를 추가합니다.
-var marker = new naver.maps.Marker({
-    position: new naver.maps.LatLng(37.5666102, 126.9783881), // 마커의 위치 좌표
-    map: map
-});
+
+function showImage(index) {
+    images.forEach((image, i) => {
+        if (i === index) {
+            image.classList.add('active');
+            image.style.opacity = '1';
+            image.style.display = 'block';
+        } else {
+            image.classList.remove('active');
+            image.style.opacity = '0';
+            image.style.display = 'none';
+            // transitionend 이벤트를 사용하여 opacity가 0이 되면 display: none을 적용
+            image.addEventListener('transitionend', function handleTransitionEnd() {
+                if (image.style.opacity === '0') {
+
+                    image.removeEventListener('transitionend', handleTransitionEnd);
+                }
+            });
+        }
+    });
+}
+
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    showImage(currentImageIndex);
+}
+
+setInterval(nextImage, 3000);
+
