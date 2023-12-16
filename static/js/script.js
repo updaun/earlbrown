@@ -7,9 +7,7 @@ menu.onclick = () => {
 }
 
 let section = document.querySelectorAll('section');
-console.log(section);
 let navLinks = document.querySelectorAll('header .navbar a');
-console.log(navLinks);
 
 window.onscroll = () => {
     menu.classList.remove('fa-times');
@@ -22,7 +20,7 @@ window.onscroll = () => {
         let offset = sec.offsetTop - 150;
         let id = sec.getAttribute('id');
 
-        if (top => offset && top < offset + height) {
+        if (top >= offset && top < offset + height) {
             navLinks.forEach(links => {
                 links.classList.remove('active');
                 document.querySelector('header .navbar a[href*=' + id + ']').classList.add('active');
@@ -85,3 +83,13 @@ var swiper = new Swiper(".review-slider", {
         },
     },
 });
+
+function loader(){
+    document.querySelector('.loader-container').classList.add('fade-out');
+}
+
+function fadeOut(){
+    setInterval(loader, 2000);
+}
+
+window.onload = fadeOut;
