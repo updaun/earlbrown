@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import MenuCreateView, MenuListView, MenuDetailView, MenuUpdateView
+from .views import *
 from .apis import MenuCreateAPI, MenuDetailAPI, MenuUpdateAPI, MenuDeleteAPI
 from .apis import MenuImageCreateAPI
 
@@ -7,6 +7,7 @@ app_name = "menu"
 
 urlpatterns = [
     # VIEW
+    path("", MenuView.as_view(), name="menu"),
     path("create/", MenuCreateView.as_view(), name="create"),
     path("list/", MenuListView.as_view(), name="list"),
     path("detail/<int:pk>", MenuDetailView.as_view(), name="detail"),

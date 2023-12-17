@@ -28,3 +28,8 @@ class MenuUpdateView(APIView):
     def get(self, request, pk):
         menu_info = get_menu_info(request, pk)
         return render(request, "menu/update.html", menu_info)
+
+
+class MenuView(APIView):
+    def get(self, request):
+        return render(request, "menu.html", {})
